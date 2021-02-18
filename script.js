@@ -1,18 +1,21 @@
-let arrOfTime = ['Today', 'Tonight', 'Tomorow', 'Next year', 'In two weeks'];
-let arrOfVerbs = ['you will', 'you schould', 'you will', 'you must'];
-let arrOfActions = ['be blinded by passion', 'have a lot of fun', 'see a ghoast', 'sleep a lot', 'have a great success', 'get what you want'];
 
+
+let dictionary = {
+    arrOfTime: ['Today', 'Tonight', 'Tomorow', 'Next year', 'In two weeks'],
+    arrOfVerbs: ['you will', 'you schould', 'you must'],
+    arrOfActions: ['be blinded by passion', 'have a lot of fun', 'see a ghoast', 'sleep a lot', 'have a great success', 'get what you want']
+}
 
 const findRandomElement = (arr) => {
     let i = Math.floor(Math.random() * arr.length);
     return arr[i];
 };
-//console.log(findRandomElement(arrOfTime));
 
-
-let randTime = findRandomElement(arrOfTime);
-let randVerb = findRandomElement(arrOfVerbs);
-let randAction = findRandomElement(arrOfActions);
-
-let message = randTime + ' ' + randVerb + ' ' + randAction + '.';
-console.log(message);
+const createAMessage = (obj) => {
+    let message = [];
+    for (let element in obj) {
+        message.push(findRandomElement(dictionary[element]));
+    }
+    return message.join(' ');
+}
+console.log(createAMessage(dictionary));
